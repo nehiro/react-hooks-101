@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CREATE_EVENT, DELETE_ALL_EVENTS } from '../actions';
 
 const EventForm = ({ state, dispach }) => {
   const [title, setTitle] = useState('');
@@ -7,7 +8,7 @@ const EventForm = ({ state, dispach }) => {
   const addEvent = (e) => {
     e.preventDefault();
     dispach({
-      type: 'CREATE_EVENT',
+      type: CREATE_EVENT,
       title,
       body,
     });
@@ -20,7 +21,7 @@ const EventForm = ({ state, dispach }) => {
     const result = window.confirm(
       '全てのイベントを本当に削除しても良いですか？'
     );
-    if (result) dispach({ type: 'DELETE_ALL_EVENTS' });
+    if (result) dispach({ type: DELETE_ALL_EVENTS });
   };
 
   const unCeratable = title === '' || body === '';
